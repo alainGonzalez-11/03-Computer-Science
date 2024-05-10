@@ -1,0 +1,50 @@
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#mainMenu {
+    width: 60%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, .3);
+    border: 2px solid #000; /* Add a border to create the chamfered effect */
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: ridge 5px whitesmoke;
+}
+
+h1 {
+    font-size: xx-large;
+    color: aliceblue;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 2em;
+    font-style: oblique;
+}
+
+.link {
+    font-size: Large;
+    color: aliceblue;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.link:hover {
+    color :midnightblue;
+    border-top: ridge 3px midnightblue;
+    border-bottom: groove 3px midnightblue;
+    cursor: pointer;
+}
