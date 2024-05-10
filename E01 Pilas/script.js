@@ -45,7 +45,35 @@ function reemplazarPila(pila, nuevo, viejo) {
   return pila;
 }
 
-// Ejemplo de uso
-//let pila = ['Manzana','Cebolla','Apio','Naranja','Papaya','Sandía','Melón'];
-//let elementos = 4;
-//console.log(obtenerElementos(pila, elementos)); // Salida: ['Manzana','Cebolla','Apio','Naranja']
+/*
+3.- Un conductor maneja de un pueblo origen a un pueblo destino, pasando por varios pueblos. Una vez en el pueblo destino, el conductor debe regresar a casa por el mismo camino. Muestre el camino recorrido tanto de ida como de vuelta.
+Recorrido: Pueblo Origen → pueblo 1 → pueblo 2 → destino
+Regreso: destino → pueblo 2’ → pueblo 1 → Pueblo Origen
+*/
+document.getElementById("T03").addEventListener("click", task3);
+
+function task3() {
+  alert(
+    recorrido(['Destino', 'Pueblo 2', 'Pueblo 1', 'Pueblo Origen'])
+  );
+}
+
+function recorrido(ruta) {
+  console.log('---Ruta de ida---');
+  let retorno = [];
+  while (ruta.length > 0) {
+    let parada = ruta.pop();
+    console.log(parada);
+    retorno.push(parada);
+  }
+  console.log('---Ruta de regreso---');
+  while (retorno.length > 0) {
+    console.log(retorno.pop());
+  }
+}
+
+
+
+/*
+4.- Un almacén tiene capacidad para apilar “n” contenedores. Cada contenedor tiene un número de identificación. Cuando se desea retirar un contenedor específico, deben retirarse primero los contenedores que están encima de él y colocarlos en otra pila, efectuar el retiro y regresarlos a su respectivo lugar.
+*/
