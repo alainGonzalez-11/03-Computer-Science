@@ -26,9 +26,23 @@ function recortarPila(pila, numero) {
 Entrada: reemplazar([3,2,3,4,6,8,1,2,5,5], 7, 2)
 Salida: [3,2,3,4,6,8,1,7]
 */
+document.getElementById("T02").addEventListener("click", task2);
 
-function obtenerElementos(pila, cantidad) {
-  
+function task2() {
+  alert(
+    reemplazarPila([3,2,3,4,6,8,1,2,5,5], 7, 2)
+  );
+}
+
+function reemplazarPila(pila, nuevo, viejo) {
+  let finalizado = false;
+  do {
+    if (pila.pop() == viejo){
+      pila.push(nuevo);
+      finalizado = true;
+    }
+  } while (!finalizado);
+  return pila;
 }
 
 // Ejemplo de uso
