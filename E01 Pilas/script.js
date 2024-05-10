@@ -53,9 +53,7 @@ Regreso: destino → pueblo 2’ → pueblo 1 → Pueblo Origen
 document.getElementById("T03").addEventListener("click", task3);
 
 function task3() {
-  alert(
     recorrido(['Destino', 'Pueblo 2', 'Pueblo 1', 'Pueblo Origen'])
-  );
 }
 
 function recorrido(ruta) {
@@ -77,3 +75,76 @@ function recorrido(ruta) {
 /*
 4.- Un almacén tiene capacidad para apilar “n” contenedores. Cada contenedor tiene un número de identificación. Cuando se desea retirar un contenedor específico, deben retirarse primero los contenedores que están encima de él y colocarlos en otra pila, efectuar el retiro y regresarlos a su respectivo lugar.
 */
+
+document.getElementById("T04").addEventListener("click", task4);
+
+function task4() {
+  var pokemons = [
+    "bulbasaur",    "ivysaur",    "venusaur",
+    "charmander",    "charmeleon",    "charizard",
+    "squirtle",    "wartortle",    "blastoise",
+    "caterpie",    "metapod",    "butterfree",
+    "weedle",    "kakuna",
+    "beedrill",
+    "pidgey",    "pidgeotto",    "pidgeot",
+    "rattata",    "raticate",
+    "spearow",    "fearow",
+    "ekans",    "arbok",
+    "pikachu",    "raichu",
+    "sandshrew",    "sandslash",
+    "nidoran-f",    "nidorina",    "nidoqueen",    "nidoran-m",    "nidorino",    "nidoking",
+    "clefairy",    "clefable",
+    "vulpix",    "ninetales",
+    "jigglypuff",    "wigglytuff",
+    "zubat",    "golbat",
+    "oddish",    "gloom",    "vileplume",
+    "paras",    "parasect",
+    "venonat",    "venomoth",
+    "diglett",    "dugtrio",
+    "meowth",    "persian",
+    "psyduck",    "golduck",
+    "mankey",    "primeape",
+    "growlithe",    "arcanine",
+    "poliwag",    "poliwhirl",    "poliwrath",
+    "abra",    "kadabra",    "alakazam",
+    "machop",    "machoke",    "machamp",
+    "bellsprout",    "weepinbell",    "victreebel",
+    "tentacool",    "tentacruel",
+    "geodude",    "graveler",    "golem",
+    "ponyta",    "rapidash",
+    "slowpoke",    "slowbro",
+    "magnemite",    "magneton",
+    "farfetchd",
+    "doduo",    "dodrio",
+    "seel",    "dewgong",
+    "grimer",    "muk",
+    "shellder",    "cloyster",
+    "gastly",    "haunter",    "gengar",
+    "onix",
+    "drowzee",    "hypno",
+    "krabby",    "kingler",
+    "voltorb",
+  ];
+    extractItem(pokemons, 3)
+}
+
+function extractItem(pila, id) {
+  let pilaTemporal = []
+  while (pila.length > id) {
+    pilaTemporal.push(pila.pop());
+
+  }
+
+  console.log('Extrayendo ' + pila.pop());
+  console.log('Pila temporal:');
+  console.log(pilaTemporal);
+
+  while (pilaTemporal.length > 0) {
+    pila.push(pilaTemporal.pop());
+
+  }
+  
+  console.log('Nueva pila:');
+  console.log(pila);
+
+}
