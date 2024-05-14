@@ -31,7 +31,7 @@ class deck {
   createDeck() {
     let symbols = ["Clubs", "Diamons", "Hearts", "Spades"];
     let values = [
-      "1",
+      "Ace",
       "2",
       "3",
       "4",
@@ -41,9 +41,9 @@ class deck {
       "8",
       "9",
       "10",
-      "J",
-      "Q",
-      "K",
+      "Jack",
+      "Queen",
+      "King",
     ];
     symbols.forEach((symbol) => {
       values.forEach((value) => {
@@ -105,12 +105,22 @@ class deck {
   }
 }
 
-/*
-♣ (clubs)
-♦ (diamonds)
-♥ (hearts)
-♠ (spades)
-*/
+/* The class "Jugador" represents a player with a name and a hand of cards in a JavaScript program. */
+class Jugador{
+    /**
+     * The above function is a JavaScript constructor that initializes an object with a name property
+     * and an empty array for hand.
+     * @param nombre - The `constructor` function you provided seems to be a constructor for a class in
+     * JavaScript. It initializes an object with a `nombre` property and an empty `hand` array.
+     */
+    constructor(nombre){
+        this.nombre = nombre;
+        this.hand = [];
+    }
+    getCard(card){
+        this.hand.push(card);
+    }
+}
 
 let baraja = new deck();
 baraja.showDeck();
@@ -120,3 +130,4 @@ baraja.showDeck();
 
 console.log(baraja.dealCard());
 baraja.showDeck();
+
