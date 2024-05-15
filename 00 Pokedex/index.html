@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="images/Pokemon.png" alt="Pokemon Logo" />
+      <form class="row custom-row col align-items-center" id="search-form">
+        <input
+          type="search"
+          class="form-control rounded"
+          id="search-bar"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          name="search-bar"
+        />
+        <button
+          type="submit"
+          class="btn btn-outline-primary"
+          id="search-submit"
+        >
+          Search
+        </button>
+      </form>
+    </header>
+    <section>
+        <img src="images/WhoMain.png" alt="Whos that Pokemon" id="WhoHeader" >
+    </section>
+    <section id="pokemonCards">
+
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

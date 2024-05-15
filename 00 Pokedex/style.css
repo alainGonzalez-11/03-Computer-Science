@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+body {
+    width: 100vw;
+    background-image: url('images/PokeballBackground.png');
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    background-color: #D2232A;
+    align-items: center;
+}
+input {
+    padding: 0.5em;
+    margin: 0 0.5em 0 0.5em;
+    font-size: large;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+button {
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 0 0.5em 0 0.5em;
+    font-size: large;
+    border-radius: 0.5em;
+    background-color: #FFCB05;
+    border: 1px solid #414141;
+    color: #2B2B2B;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #2B72B8;
+    color: whitesmoke;
+    cursor: pointer;
+    animation-duration: 100ms;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#WhoHeader {
+    width: 100vw;
+}
+
+#pokemonCards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemonCard {
+   margin: 1.5em;
+   border-radius: 1.5em;
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 1.5em;
+    margin-bottom: 1em;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.PokemonCardImage {
+    grid-column: 1;
+    grid-row: 1;
+    width: 220px;
+    height: 220px;
+    z-index: 3;
+    justify-self: center;
+}
+
+.ElementCardImage {
+    grid-column: 1;
+    grid-row: 1;
+    width: 270px;
+    height: 270px;
+    z-index: 1;
+}
