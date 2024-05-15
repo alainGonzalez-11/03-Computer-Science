@@ -86,6 +86,26 @@ button:hover {
     justify-self: center;
 }
 
+.PokemonNumber {
+    margin-top: 2em;
+    margin-right: -1em;
+    width:25%;
+    padding: 0.5em;
+    color: whitesmoke;
+    background-color: #2B2B2B;
+    font-size: large;
+    font-weight: bold;
+    border-radius:  1em 0 0 1em;
+    z-index: 5;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    justify-self: right;
+    text-align: center;
+
+    
+}
+
 .ElementCardImage {
     grid-column: 1;
     grid-row: 1;

@@ -41,15 +41,10 @@ function displayPokemonData(pokemon) {
         <article class='pokemonCard'  style="background-color: ${
           element.cardColor
         }">
-            <div class='cardImage' style="background-color: ${
-              element.imageColor
-            }">
-                <img src="${element.logoColor}" alt="${
-    pokemon.name
-  } element" class="ElementCardImage">
-                <img src="${pokemon.sprites.other.home.front_default}" alt="${
-    pokemon.name
-  }" class="PokemonCardImage">
+            <div class='cardImage' style="background-color: ${element.imageColor}">
+                <img src="${element.logoColor}" alt="${pokemon.name} element" class="ElementCardImage">
+                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}" class="PokemonCardImage">
+                <p class='PokemonNumber'> ${String(pokemon.id).padStart(3, '0')} </p>
             </div>
             <h2>${pokemon.name}</h2>
             <p>Height: ${pokemon.height}</p>
