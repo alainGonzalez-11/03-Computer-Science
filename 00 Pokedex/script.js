@@ -1,3 +1,7 @@
+/**
+ * The function fetches data for all Pokémon from the PokeAPI up to a specified limit and then fetches
+ * details for the first 151 Pokémon.
+ */
 async function fetchAllPokemon() {
   const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=2000"; // Adjust the limit if necessary
 
@@ -8,7 +12,7 @@ async function fetchAllPokemon() {
     }
 
     const data = await response.json();
-    for (let index = 0; index < 100; index++) {
+    for (let index = 0; index < 5; index++) {
       fetchPokemon(data.results[index].url);
     }
   } catch (error) {
@@ -16,6 +20,13 @@ async function fetchAllPokemon() {
   }
 }
 
+/**
+ * The `fetchPokemon` function asynchronously fetches data from a Pokémon API and displays the data,
+ * handling errors by showing a message if the Pokémon is not found.
+ * @param pokemonAPI - The `pokemonAPI` parameter in the `fetchPokemon` function is the URL of the API
+ * endpoint that provides information about a specific Pokémon. This URL is used to fetch data about
+ * the Pokémon from the API.
+ */
 async function fetchPokemon(pokemonAPI) {
   try {
     const response = await fetch(pokemonAPI);
@@ -32,30 +43,70 @@ async function fetchPokemon(pokemonAPI) {
   }
 }
 
+/**
+ * The function `displayPokemonData` takes a Pokemon object as input and dynamically creates a card
+ * displaying the Pokemon's name, image, ID, and types.
+ * @param pokemon - The `displayPokemonData` function takes a `pokemon` object as a parameter. This
+ * object should have the following structure:
+ */
 function displayPokemonData(pokemon) {
-  console.log(pokemon);
   const element = getElementStyle(pokemon.types[0].type.name);
   const pokemonDataDiv = document.getElementById("pokemonCards");
 
+  let types = '';
+  
+    for (let i = 0; i < pokemon.types.length; i++) {
+        elementType = getElementStyle(pokemon.types[i].type.name);
+        types+=`<img src="${elementType.logoColor}" alt="${pokemon.name} type" class="TypeLogo">`
+        types+=`<p> ${capitalizeFirstLetter(pokemon.types[i].type.name)} </p>`
+        
+    }
+
+
   pokemonDataDiv.innerHTML += `
-        <article class='pokemonCard'  style="background-color: ${
-          element.cardColor
-        }">
-            <div class='cardImage' style="background-color: ${element.imageColor}">
+        <article class='pokemonCard'  style="background-color: ${element.cardColor}" id="card_${pokemon.name}" onClick='viewPokemon("${pokemon.name}")'>
+            <div class='cardImage' style="background-color: ${element.imageColor}" >
                 <img src="${element.logoColor}" alt="${pokemon.name} element" class="ElementCardImage">
                 <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}" class="PokemonCardImage">
-                <p class='PokemonNumber'> ${String(pokemon.id).padStart(3, '0')} </p>
+                <p class='PokemonNumber'> # ${String(pokemon.id).padStart(3, '0')} </p>
             </div>
-            <h2>${pokemon.name}</h2>
-            <p>Height: ${pokemon.height}</p>
-            <p>Weight: ${pokemon.weight}</p>
-            <p>Type: ${pokemon.types
-              .map((typeInfo) => typeInfo.type.name)
-              .join(", ")}</p>
+            <h2 >${pokemon.name.toUpperCase()}</h2>
+            <div class = 'typeSection'> 
+                ${types}
+            </div>
         </article>
     `;
 }
 
+function viewPokemon(name) {
+    console.log('pressed');
+    window.location.href = `pokemon.html?name=${name}`;
+}
+
+/**
+ * The function `capitalizeFirstLetter` takes a string as input and returns the same string with the
+ * first letter capitalized.
+ * @param string - The `capitalizeFirstLetter` function takes a string as input and capitalizes the
+ * first letter of that string.
+ * @returns The `capitalizeFirstLetter` function takes a string as input and returns the same string
+ * with the first letter capitalized.
+ */
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
+ * The function `getElementStyle` takes an element name as input and returns an object containing style
+ * properties such as color, logoColor, cardColor, and imageColor based on the element type.
+ * @param element - The `getElementStyle` function takes an element as a parameter and returns an
+ * object containing style properties based on the element provided. The element can be a type of
+ * Pokemon, such as "water", "fire", "grass", etc.
+ * @returns The function `getElementStyle` returns an object containing the following properties:
+ * - `color`: A color code based on the element provided (e.g., "#5090D6" for "water").
+ * - `logoColor`: A string representing the path to an image file based on the element provided (e.g.,
+ * "images//color_water.svg").
+ * - `cardColor`: A color code with added
+ */
 function getElementStyle(element) {
   let style = {};
   switch (element.toLowerCase()) {

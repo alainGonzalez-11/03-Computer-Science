@@ -59,12 +59,18 @@ button:hover {
 
 .pokemonCard {
    margin: 1.5em;
+   padding-bottom: 1em;
    border-radius: 1.5em;
    width: 300px;
    display: flex;
    flex-direction: column;
    align-items: center;
    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pokemonCard:hover {
+    cursor: pointer;
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cardImage {
@@ -87,9 +93,9 @@ button:hover {
 }
 
 .PokemonNumber {
-    margin-top: 2em;
+    margin-top: 1em;
     margin-right: -1em;
-    width:25%;
+    width:30%;
     padding: 0.5em;
     color: whitesmoke;
     background-color: #2B2B2B;
@@ -112,4 +118,59 @@ button:hover {
     width: 270px;
     height: 270px;
     z-index: 1;
+}
+
+.typeSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center
+}
+.typeSection *{
+    padding: 0.5em;
+}
+
+.TypeLogo {
+    height: 2em;
+}
+
+
+/*
+Definitions specific to pokedex
+*/
+#descriptionArea {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#PokedexArea{
+    width: 40%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+#Pokedex{
+    width: 90%;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.PokedexImage{
+    grid-column: 1;
+    grid-row: 1;
+    width: 50%;
+    margin-left: 5%;
+    margin-bottom: 25%;
+    z-index: 3;
+    justify-self: center;
+}
+
+#detailsArea{
+    width: 60%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
