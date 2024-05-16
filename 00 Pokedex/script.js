@@ -12,7 +12,7 @@ async function fetchAllPokemon() {
     }
 
     const data = await response.json();
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 151; index++) {
       fetchPokemon(data.results[index].url);
     }
   } catch (error) {
