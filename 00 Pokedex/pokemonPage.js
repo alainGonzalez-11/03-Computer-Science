@@ -3,7 +3,6 @@ function initialice() {
   const name = params.get("name");
   const pokemon = fetchPokemonData(name)
     .then((pokemon) => {
-      console.log(pokemon);
       addPokedex(pokemon);
       // You can access specific attributes like pokemon.name, pokemon.types, etc.
     })
@@ -27,7 +26,6 @@ async function fetchPokemonData(pokemonName) {
 
 function addPokedex(pokemon) {
   let area = document.getElementById("PokedexArea");
-  console.log(pokemon);
   area.innerHTML += `<img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}" class="PokedexImage">`;
 
   const detailsDiv = document.getElementById("detailsArea");
@@ -72,13 +70,38 @@ about a Pokemon.*/
   generalStats += "</div>";
   generalStats += "</section>";
 
-  let mainSection = '';
-
   
+  let mainSection = '<div id="Evolutions"></div>';
+
+
   detailsDiv.innerHTML += `
     <h1>${pokemon.name.toUpperCase()}</h1>
-    ${(types, generalStats)}
+    ${(types)}
+    ${generalStats}
+    ${mainSection}
   `;
+
+
+
+  fetchPokemonEvolutionPath(pokemon.name)
+  .then(evolutionPath => {
+    evolutionPath.forEach(newPokemon => {
+
+
+      const newPokemonfiles = fetchPokemonData(newPokemon)
+    .then((newPokemon) => {
+      console.log(newPokemon);
+      //----------------------------------------------------------------
+      //----------------------------------------------------------------
+      //----------------------------------------------------------------
+      document.getElementById('Evolutions').innerHTML+=displayPokemonData(newPokemon);
+
+      // You can access specific attributes like pokemon.name, pokemon.types, etc.
+    })
+    .catch((error) => console.error("Error:", error));
+    });
+  })
+  .catch(error => console.error('Error:', error));
 }
 
 /**
@@ -91,6 +114,13 @@ about a Pokemon.*/
  */
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
+
+function viewPokemon(name) {
+  console.log('pressed');
+  window.location.href = `pokemon.html?name=${name}`;
 }
 
 function getElementStyle(element) {
@@ -161,3 +191,77 @@ function getElementStyle(element) {
   return style;
 }
 initialice();
+
+
+
+// Function to fetch evolution chain data for a Pokémon and extract evolution path
+async function fetchPokemonEvolutionPath(pokemonName) {
+  try {
+    // Fetch Pokémon species data to get the evolution chain URL
+    const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`);
+    if (!speciesResponse.ok) {
+      throw new Error('Pokemon species not found!');
+    }
+    const speciesData = await speciesResponse.json();
+
+    // Get the evolution chain URL from the species data
+    const evolutionChainUrl = speciesData.evolution_chain.url;
+
+    // Fetch evolution chain data
+    const evolutionChainResponse = await fetch(evolutionChainUrl);
+    if (!evolutionChainResponse.ok) {
+      throw new Error('Evolution chain not found!');
+    }
+    const evolutionChainData = await evolutionChainResponse.json();
+
+    // Function to recursively traverse the evolution chain and collect Pokémon names
+    const getEvolutionChain = (chain) => {
+      const evolutions = [];
+      let currentStage = chain;
+
+      while (currentStage) {
+        evolutions.push(currentStage.species.name);
+        currentStage = currentStage.evolves_to.length ? currentStage.evolves_to[0] : null;
+      }
+
+      return evolutions;
+    };
+
+    // Extract the evolution path
+    const evolutionPath = getEvolutionChain(evolutionChainData.chain);
+    return evolutionPath;
+  } catch (error) {
+    console.error('Error fetching evolution path:', error);
+  }
+}
+
+
+function displayPokemonData(pokemon) {
+  const element = getElementStyle(pokemon.types[0].type.name);
+
+  let types = '';
+  
+    for (let i = 0; i < pokemon.types.length; i++) {
+        elementType = getElementStyle(pokemon.types[i].type.name);
+        types+=`<img src="${elementType.logoColor}" alt="${pokemon.name} type" class="TypeLogo">`
+        types+=`<p> ${capitalizeFirstLetter(pokemon.types[i].type.name)} </p>`
+        
+    }
+
+
+  let PokemonCard = `
+        <article class='pokemonCard'  style="background-color: ${element.cardColor}" id="card_${pokemon.name}" onClick='viewPokemon("${pokemon.name}")'>
+            <div class='cardImage' style="background-color: ${element.imageColor}" >
+                <img src="${element.logoColor}" alt="${pokemon.name} element" class="ElementCardImage">
+                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}" class="PokemonCardImage">
+                <p class='PokemonNumber'> # ${String(pokemon.id).padStart(3, '0')} </p>
+            </div>
+            <h2 >${pokemon.name.toUpperCase()}</h2>
+            <div class = 'typeSection'> 
+                ${types}
+            </div>
+        </article>
+    `;
+
+    return PokemonCard;
+}

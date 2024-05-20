@@ -214,7 +214,11 @@ h1 {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 
 .statZone {
@@ -243,9 +247,14 @@ h1 {
 }
 
 .abilityButton{
-    font-size: larger;
-    background-color: #dddddd;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 0.75em;
-    border-radius: 1em;
+    background-color: #bdbdbd;
+    padding: .75em;
+    border-radius: 1.5em;
+    align-items: center;
+    justify-content: center;
+}
+
+#Evolutions{
+    display: flex;
+    flex-direction: row;
 }
