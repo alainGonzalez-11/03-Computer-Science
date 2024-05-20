@@ -70,38 +70,28 @@ about a Pokemon.*/
   generalStats += "</div>";
   generalStats += "</section>";
 
-  
   let mainSection = '<div id="Evolutions"></div>';
-
 
   detailsDiv.innerHTML += `
     <h1>${pokemon.name.toUpperCase()}</h1>
-    ${(types)}
+    ${types}
     ${generalStats}
     ${mainSection}
   `;
 
-
-
   fetchPokemonEvolutionPath(pokemon.name)
-  .then(evolutionPath => {
-    evolutionPath.forEach(newPokemon => {
-
-
-      const newPokemonfiles = fetchPokemonData(newPokemon)
-    .then((newPokemon) => {
-      console.log(newPokemon);
-      //----------------------------------------------------------------
-      //----------------------------------------------------------------
-      //----------------------------------------------------------------
-      document.getElementById('Evolutions').innerHTML+=displayPokemonData(newPokemon);
-
-      // You can access specific attributes like pokemon.name, pokemon.types, etc.
+    .then((evolutionPath) => {
+      evolutionPath.forEach(async (newPokemon) => {
+        const newPokemonfiles = await fetchPokemonData(newPokemon)
+          .then((newPokemon) => {
+            console.log(newPokemon);
+            document.getElementById("Evolutions").innerHTML +=
+              displayPokemonData(newPokemon);
+          })
+          .catch((error) => console.error("Error:", error));
+      });
     })
     .catch((error) => console.error("Error:", error));
-    });
-  })
-  .catch(error => console.error('Error:', error));
 }
 
 /**
@@ -116,10 +106,8 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
-
 function viewPokemon(name) {
-  console.log('pressed');
+  console.log("pressed");
   window.location.href = `pokemon.html?name=${name}`;
 }
 
@@ -192,15 +180,15 @@ function getElementStyle(element) {
 }
 initialice();
 
-
-
 // Function to fetch evolution chain data for a Pokémon and extract evolution path
 async function fetchPokemonEvolutionPath(pokemonName) {
   try {
     // Fetch Pokémon species data to get the evolution chain URL
-    const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`);
+    const speciesResponse = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName.toLowerCase()}`
+    );
     if (!speciesResponse.ok) {
-      throw new Error('Pokemon species not found!');
+      throw new Error("Pokemon species not found!");
     }
     const speciesData = await speciesResponse.json();
 
@@ -210,7 +198,7 @@ async function fetchPokemonEvolutionPath(pokemonName) {
     // Fetch evolution chain data
     const evolutionChainResponse = await fetch(evolutionChainUrl);
     if (!evolutionChainResponse.ok) {
-      throw new Error('Evolution chain not found!');
+      throw new Error("Evolution chain not found!");
     }
     const evolutionChainData = await evolutionChainResponse.json();
 
@@ -221,7 +209,9 @@ async function fetchPokemonEvolutionPath(pokemonName) {
 
       while (currentStage) {
         evolutions.push(currentStage.species.name);
-        currentStage = currentStage.evolves_to.length ? currentStage.evolves_to[0] : null;
+        currentStage = currentStage.evolves_to.length
+          ? currentStage.evolves_to[0]
+          : null;
       }
 
       return evolutions;
@@ -231,30 +221,38 @@ async function fetchPokemonEvolutionPath(pokemonName) {
     const evolutionPath = getEvolutionChain(evolutionChainData.chain);
     return evolutionPath;
   } catch (error) {
-    console.error('Error fetching evolution path:', error);
+    console.error("Error fetching evolution path:", error);
   }
 }
-
 
 function displayPokemonData(pokemon) {
   const element = getElementStyle(pokemon.types[0].type.name);
 
-  let types = '';
-  
-    for (let i = 0; i < pokemon.types.length; i++) {
-        elementType = getElementStyle(pokemon.types[i].type.name);
-        types+=`<img src="${elementType.logoColor}" alt="${pokemon.name} type" class="TypeLogo">`
-        types+=`<p> ${capitalizeFirstLetter(pokemon.types[i].type.name)} </p>`
-        
-    }
+  let types = "";
 
+  for (let i = 0; i < pokemon.types.length; i++) {
+    elementType = getElementStyle(pokemon.types[i].type.name);
+    types += `<img src="${elementType.logoColor}" alt="${pokemon.name} type" class="TypeLogo">`;
+    types += `<p> ${capitalizeFirstLetter(pokemon.types[i].type.name)} </p>`;
+  }
 
   let PokemonCard = `
-        <article class='pokemonCard'  style="background-color: ${element.cardColor}" id="card_${pokemon.name}" onClick='viewPokemon("${pokemon.name}")'>
-            <div class='cardImage' style="background-color: ${element.imageColor}" >
-                <img src="${element.logoColor}" alt="${pokemon.name} element" class="ElementCardImage">
-                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}" class="PokemonCardImage">
-                <p class='PokemonNumber'> # ${String(pokemon.id).padStart(3, '0')} </p>
+        <article class='pokemonCardSmall'  style="background-color: ${
+          element.cardColor
+        }" id="card_${pokemon.name}" onClick='viewPokemon("${pokemon.name}")'>
+            <div class='cardImage' style="background-color: ${
+              element.imageColor
+            }" >
+                <img src="${element.logoColor}" alt="${
+    pokemon.name
+  } element" class="ElementCardImage">
+                <img src="${pokemon.sprites.other.home.front_default}" alt="${
+    pokemon.name
+  }" class="PokemonCardImage">
+                <p class='PokemonNumber'> # ${String(pokemon.id).padStart(
+                  3,
+                  "0"
+                )} </p>
             </div>
             <h2 >${pokemon.name.toUpperCase()}</h2>
             <div class = 'typeSection'> 
@@ -263,5 +261,5 @@ function displayPokemonData(pokemon) {
         </article>
     `;
 
-    return PokemonCard;
+  return PokemonCard;
 }
