@@ -70,7 +70,8 @@ about a Pokemon.*/
   generalStats += "</div>";
   generalStats += "</section>";
 
-  let mainSection = '<div id="Evolutions"></div>';
+  let mainSection = `<section id='StatsChart'><canvas id="pokemonStatsChart"></canvas></section>
+                      <div id="Evolutions"></div>`;
 
   detailsDiv.innerHTML += `
     <h1>${pokemon.name.toUpperCase()}</h1>
@@ -79,6 +80,86 @@ about a Pokemon.*/
     ${mainSection}
   `;
 
+
+  addPokemonStats(pokemon);
+  addEvolutionsCards(pokemon);
+
+}
+
+/**
+ * The function `addPokemonStats` creates a bar chart displaying the stats of a Pokémon by utilizing
+ * Chart.js library.
+ * @param pokemon - The `addPokemonStats` function you provided is used to create a bar chart
+ * displaying the stats of a Pokémon. The function takes a `pokemon` object as a parameter, which
+ * should have a `stats` property containing an array of objects with `stat` and `base_stat`
+ * properties.
+ */
+
+function addPokemonStats(pokemon) {
+  const ctx = document.getElementById('pokemonStatsChart').getContext('2d');
+  let label = [];
+  let value = [];
+  pokemon.stats.forEach(stat => {
+    label.push(capitalizeFirstLetter(stat.stat.name));
+    value.push(stat.base_stat);
+  });
+  console.log(label)
+  console.log(value)
+
+
+  const data = {
+    labels: label,
+    datasets: [{
+        label: 'Pokémon Stats',
+        data: value, // Replace these values with the actual stats
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+};
+
+
+const options = {
+  indexAxis: 'y',
+  scales: {
+      x: {
+          beginAtZero: true
+      }
+  }
+};
+
+new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: options
+});
+}
+
+
+/**
+ * The function `addEvolutionsCards` fetches the evolution path of a given Pokémon and displays the
+ * data of each evolution in the HTML element with the id "Evolutions".
+ * @param pokemon - The `addEvolutionsCards` function takes a `pokemon` object as a parameter. This
+ * `pokemon` object likely contains information about a specific Pokémon, such as its name, type,
+ * abilities, etc. The function uses this information to fetch the evolution path of the Pokémon and
+ * then fetches
+ */
+function addEvolutionsCards(pokemon) {
+  
   fetchPokemonEvolutionPath(pokemon.name)
     .then((evolutionPath) => {
       evolutionPath.forEach(async (newPokemon) => {
@@ -94,7 +175,10 @@ about a Pokemon.*/
     .catch((error) => console.error("Error:", error));
 }
 
+
 /**
+ * 
+ * 
  * The function `capitalizeFirstLetter` takes a string as input and returns the same string with the
  * first letter capitalized.
  * @param string - The `capitalizeFirstLetter` function takes a string as input and capitalizes the

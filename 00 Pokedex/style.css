@@ -145,7 +145,7 @@ Definitions specific to pokedex
     width: 100vw;
     height: 100vh;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     justify-content: center;
 }
 #PokedexArea{
@@ -279,4 +279,13 @@ h1 {
 
  .pokemonCardSmall .TypeLogo {
     height: 1.5em;
+}
+
+#StatsChart{
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
