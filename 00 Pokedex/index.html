@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="style.css" />
     <script src="displayFunctions.js"></script>
     <script src="consumePokeAPI.js"></script>
-    
   </head>
   <body>
     <header>
-      <a href="index.html"><img src="images/Pokemon.png" alt="Pokemon Logo" /></a>
+      <a href="index.html"
+        ><img src="images/Pokemon.png" alt="Pokemon Logo"
+      /></a>
       <form class="row custom-row col align-items-center" id="search-form">
         <input
           type="search"
@@ -23,20 +24,20 @@
           name="search-bar"
         />
         <button
-          type="submit"
           class="btn btn-outline-primary"
           id="search-submit"
+          onclick="searchPokemon()"
         >
           Search
         </button>
       </form>
     </header>
-    <section>
-        <img src="images/WhoMain.png" alt="Whos that Pokemon" id="WhoHeader" >
-    </section>
-    <section id="pokemonCards">
 
+    <section id="content">
+      <img src="images/WhoMain.png" alt="Whos that Pokemon" id="WhoHeader" />
+      <section id="pokemonCards"></section>
     </section>
+
     <script src="script.js"></script>
   </body>
 </html>

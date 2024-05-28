@@ -43,9 +43,21 @@ async function fetchPokemon(pokemonAPI) {
   }
 
 
+/**
+ * The function `viewPokemon` logs a message to the console and redirects the user to a new page with
+ * the specified Pokemon name in the URL.
+ * @param name - The `viewPokemon` function takes a `name` parameter, which is used to construct a URL
+ * that redirects the user to a specific `pokemon.html` page with the `name` parameter in the query
+ * string.
+ */
   function viewPokemon(name) {
-    console.log("pressed");
     window.location.href = `pokemon.html?name=${name}`;
+  }
+
+
+  function searchPokemon() {
+    let searchText = document.getElementById("search-bar").value;
+    window.location.href = `search.html?name=${searchText}`;
   }
 
 

@@ -4,13 +4,42 @@
  */
 function initialice() {
   const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
-  fetchPokemonByName(name)
-    .then((pokemon) => {
-      addPokedex(pokemon);
-      // You can access specific attributes like pokemon.name, pokemon.types, etc.
-    })
-    .catch((error) => console.error("Error:", error));
+  const search = params.get("search-bar");
+  if (search == null) {
+    /* This JavaScript code snippet is making use of promises to fetch data about Pokemon. Here's a
+breakdown of what it's doing: */
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    fetchPokemonByName(name)
+      .then((pokemon) => {
+        addPokedex(pokemon);
+        // You can access specific attributes like pokemon.name, pokemon.types, etc.
+      })
+      .catch((error) => console.error("Error:", error));
+  } else if (search !== null) {
+    let content = document.getElementById("descriptionArea");
+    content.setAttribute("id", "searchContent");
+    content.innerHTML = `<aside id="filters"></aside><aside id="searchResults"> </aside>`;
+
+    fetchAllPokemon().then(async (pokemonData) => {
+      const pokemonDataDiv = document.getElementById("searchResults");
+      const POKEMON_NUMBER = pokemonData.results.length;
+      let searchIndex = 0;
+      let resultsIndex = 0;
+
+      while (resultsIndex < 25 && searchIndex < POKEMON_NUMBER) {
+        await fetchPokemon(pokemonData.results[searchIndex].url).then(
+          (pokemon) => {
+            if (pokemon.name.includes(search)) {
+              pokemonDataDiv.innerHTML += displayPokemonData(pokemon);
+              resultsIndex++;
+            }
+          }
+        );
+        searchIndex++;
+      }
+    });
+  }
 }
 
 /* The `addPokedex` function is responsible for adding Pokemon data to the Pokedex display on the
@@ -92,8 +121,6 @@ function addPokemonStats(pokemon) {
     label.push(capitalizeFirstLetter(stat.stat.name));
     value.push(stat.base_stat);
   });
-  console.log(label);
-  console.log(value);
 
   const data = {
     labels: label,
@@ -149,15 +176,18 @@ function addPokemonStats(pokemon) {
 function addEvolutionsCards(pokemon) {
   fetchPokemonEvolutionPath(pokemon.name)
     .then((evolutionPath) => {
-      evolutionPath.forEach(async (newPokemon) => {
-        const newPokemonfiles = await fetchPokemonByName(newPokemon)
-          .then((newPokemon) => {
-            console.log(newPokemon);
+      evolutions = [];
+      for (let i = 0; i < evolutionPath.length; i++) {
+        evolutions.push(fetchPokemonByName(evolutionPath[i]));
+      }
+      Promise.all(evolutions)
+        .then((resultado) => {
+          resultado.forEach((newPokemon) => {
             document.getElementById("Evolutions").innerHTML +=
-            displayPokemonData(newPokemon, small=true);
-          })
-          .catch((error) => console.error("Error:", error));
-      });
+              displayPokemonData(newPokemon, (small = true));
+          });
+        })
+        .catch((error) => console.log(`Error en las promesas ${error}`));
     })
     .catch((error) => console.error("Error:", error));
 }

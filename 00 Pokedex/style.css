@@ -1,291 +1,298 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+  padding: 0;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 body {
-    width: 100vw;
-    background-image: url('images/PokeballBackground.png');
-    
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100vw;
+  background-image: url("images/PokeballBackground.png");
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 header {
-    display: flex;
-    flex-direction: row;
-    padding: 1em;
-    background-color: #D2232A;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+  background-color: #d2232a;
+  align-items: center;
 }
 input {
-    padding: 0.5em;
-    margin: 0 0.5em 0 0.5em;
-    font-size: large;
-    border-radius: 0.5em;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  margin: 0 0.5em 0 0.5em;
+  font-size: large;
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 button {
-    padding: 0.5em 1em 0.5em 1em;
-    margin: 0 0.5em 0 0.5em;
-    font-size: large;
-    border-radius: 0.5em;
-    background-color: #FFCB05;
-    border: 1px solid #414141;
-    color: #2B2B2B;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 0 0.5em 0 0.5em;
+  font-size: large;
+  border-radius: 0.5em;
+  background-color: #ffcb05;
+  border: 1px solid #414141;
+  color: #2b2b2b;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #2B72B8;
-    color: whitesmoke;
-    cursor: pointer;
-    animation-duration: 100ms;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+  background-color: #2b72b8;
+  color: whitesmoke;
+  cursor: pointer;
+  animation-duration: 100ms;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 #WhoHeader {
-    width: 100vw;
+  width: 100vw;
 }
 
 #pokemonCards {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokemonCard {
-   margin: 1.5em;
-   padding-bottom: 1em;
-   border-radius: 1.5em;
-   width: 300px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
+  margin: 1.5em;
+  padding-bottom: 1em;
+  border-radius: 1.5em;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
 }
 
 .pokemonCard:hover {
-    cursor: pointer;
-    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.3);
 }
 
 .cardImage {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 1.5em;
-    margin-bottom: 1em;
-    display: grid;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 1.5em;
+  margin-bottom: 1em;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .PokemonCardImage {
-    grid-column: 1;
-    grid-row: 1;
-    width: 75%;
-    aspect-ratio: 1/1;
-    z-index: 3;
-    justify-self: center;
+  grid-column: 1;
+  grid-row: 1;
+  width: 75%;
+  aspect-ratio: 1/1;
+  z-index: 3;
+  justify-self: center;
 }
 
 .PokemonNumber {
-    margin-top: 1em;
-    margin-right: -.2em;
-    width:30%;
-    padding: 0.5em;
-    color: whitesmoke;
-    background-color: #2B2B2B;
-    font-size: large;
-    font-weight: bold;
-    border-radius:  1em 0 0 1em;
-    z-index: 5;
-    grid-column: 1;
-    grid-row: 1;
-    align-self: start;
-    justify-self: right;
-    text-align: center;
-
-    
+  margin-top: 1em;
+  margin-right: -0.2em;
+  width: 30%;
+  padding: 0.5em;
+  color: whitesmoke;
+  background-color: #2b2b2b;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 1em 0 0 1em;
+  z-index: 5;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: right;
+  text-align: center;
 }
 
 .ElementCardImage {
-    grid-column: 1;
-    grid-row: 1;
-    width: 80%;
-    aspect-ratio: 1/1;
-    z-index: 1;
-    align-self: center;
-    justify-self: center;
+  grid-column: 1;
+  grid-row: 1;
+  width: 80%;
+  aspect-ratio: 1/1;
+  z-index: 1;
+  align-self: center;
+  justify-self: center;
 }
 
 .typeSection {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.typeSection *{
-    padding: 0.5em;
+.typeSection * {
+  padding: 0.5em;
 }
 
 .TypeLogo {
-    height: 2em;
+  height: 2em;
 }
-
 
 /*
 Definitions specific to pokedex
 */
 #descriptionArea {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: row;
-    align-items: top;
-    justify-content: center;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+  align-items: top;
+  justify-content: center;
 }
-#PokedexArea{
-    width: 40%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
+#PokedexArea {
+  width: 40%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
-#Pokedex{
-    width: 90%;
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.PokedexImage{
-    grid-column: 1;
-    grid-row: 1;
-    width: 48%;
-    margin-left: 5%;
-    margin-bottom: 20%;
-    z-index: 3;
-    justify-self: center;
+#Pokedex {
+  width: 90%;
+  grid-column: 1;
+  grid-row: 1;
 }
 
-#detailsArea{
-    width: 60%;
-    display: grid;
-    align-items: center;
-    justify-content: center;
+.PokedexImage {
+  grid-column: 1;
+  grid-row: 1;
+  width: 48%;
+  margin-left: 5%;
+  margin-bottom: 20%;
+  z-index: 3;
+  justify-self: center;
 }
 
-.typeButton{
-    display: flex;
-    flex-direction: row;
-    padding: 0.5em;
-    border-radius: 1.5em;
-    align-items: center;
-    justify-content: center;
+#detailsArea {
+  width: 60%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.typeButton {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  border-radius: 1.5em;
+  align-items: center;
+  justify-content: center;
 }
 
 .TypeLogoPokedex {
-    height: 1.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+  height: 1.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 .typeButton p {
-    padding-right: 0.5em;
-
+  padding-right: 0.5em;
 }
 h1 {
-    font-size: x-large;
-    font-weight: bolder;
-    text-align: center;
-    margin: 1em;
-    border-bottom: 3px ridge #2B2B2B;
-    color: #2B2B2B;
+  font-size: x-large;
+  font-weight: bolder;
+  text-align: center;
+  margin: 1em;
+  border-bottom: 3px ridge #2b2b2b;
+  color: #2b2b2b;
 }
 
 #TypesArea {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
 }
 
 #GeneralStatsArea {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-
 .statZone {
-    display: grid;
-    padding: 1em;
-    align-items: center;
-    justify-content: center;
-    gap: 1em;
+  display: grid;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 .zoneTitle {
-    grid-column: 1/3;
-    color: #929292;
-    font-size:larger;
-    text-align: center;
+  grid-column: 1/3;
+  color: #929292;
+  font-size: larger;
+  text-align: center;
 }
 
-.zoneLogo{
-    height: 2.5em;;
+.zoneLogo {
+  height: 2.5em;
 }
 
-.zoneValue{
-    font-size: xx-large;
-    font-weight: bold;
-    text-align: center;
+.zoneValue {
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
 }
 
-.abilityButton{
-    background-color: #bdbdbd;
-    padding: .75em;
-    border-radius: 1.5em;
-    align-items: center;
-    justify-content: center;
+.abilityButton {
+  background-color: #bdbdbd;
+  padding: 0.75em;
+  border-radius: 1.5em;
+  align-items: center;
+  justify-content: center;
 }
 
-#Evolutions{
-    display: flex;
-    flex-direction: row;
+#Evolutions {
+  display: flex;
+  flex-direction: row;
 }
 
 .pokemonCardSmall {
-    margin: 1.5em;
-    padding-bottom: 1em;
-    border-radius: 1.5em;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
- }
- 
- .pokemonCardSmall:hover {
-     cursor: pointer;
-     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
- }
-
- .pokemonCardSmall .TypeLogo {
-    height: 1.5em;
+  margin: 1.5em;
+  padding-bottom: 1em;
+  border-radius: 1.5em;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
 }
 
-#StatsChart{
-    width: 100%;
-    align-self: center;
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.pokemonCardSmall:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.pokemonCardSmall .TypeLogo {
+  height: 1.5em;
+}
+
+#StatsChart {
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchContent {
+  display: flex;
+  flex-direction: row;
+}
+#filters {
+  width: 25%;
+}
+
+#searchResults {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
 }
