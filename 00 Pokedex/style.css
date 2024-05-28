@@ -50,6 +50,10 @@ button:hover {
   width: 100vw;
 }
 
+#WhoImage {
+  width: 100vw;
+}
+
 #pokemonCards {
   display: flex;
   flex-wrap: wrap;
@@ -140,7 +144,8 @@ Definitions specific to pokedex
 #descriptionArea {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  padding-top: 3em;
   flex-direction: row;
   align-items: top;
   justify-content: center;
@@ -295,4 +300,51 @@ h1 {
   width: 75%;
   display: flex;
   flex-wrap: wrap;
+}
+
+
+
+#TVArea {
+  width: 50%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+#optionsArea {
+  width: 50%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+#TV {
+  width: 80%;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+}
+
+.invisible {
+  display: none;
+}
+.stacked {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
+  z-index: 2;
+  width: 35%;
+  margin-top: 10%;
+}
+
+
+.optionButton {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em;
+  border-radius: 1.5em;
+  align-items: center;
+  justify-content: center;
+  background-color: #bdbdbd;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
