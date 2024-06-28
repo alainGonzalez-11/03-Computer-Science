@@ -1,12 +1,12 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 body {
   width: 100vw;
-  background-image: url("images/PokeballBackground.png");
+  background-image: url('images/PokeballBackground.png');
 
   background-attachment: fixed;
   background-position: center;
@@ -16,9 +16,15 @@ body {
 header {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: 1em;
   background-color: #d2232a;
   align-items: center;
+}
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
 }
 input {
   padding: 0.5em;
@@ -302,8 +308,6 @@ h1 {
   flex-wrap: wrap;
 }
 
-
-
 #TVArea {
   width: 50%;
   display: grid;
@@ -337,7 +341,6 @@ h1 {
   margin-top: 10%;
 }
 
-
 .optionButton {
   display: flex;
   flex-direction: row;
@@ -345,6 +348,21 @@ h1 {
   border-radius: 1.5em;
   align-items: center;
   justify-content: center;
-  background-color: #bdbdbd;
+  background-color: #FFFFFF;
+  border: #2b72b8 solid 3px;
+  font-weight: bolder;
+  font-size: large;
+
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.optionButton:hover {
+  background-color:#ffcb05;
+  border: black solid 3px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.6);
+  transition: 500ms;
+  cursor: pointer;
+}
+
+.logo {
+  height: 8vh;
 }
